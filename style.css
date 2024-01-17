@@ -1,8 +1,12 @@
 :root {
   --light-text: rgb(255, 237, 215);
   --primary-color: rgb(255, 198, 123);
+  --primary-accent: rgb(197, 123, 27);
   --secondary-color: rgb(80, 90, 115);
+  --secondary-accent: rgb(135, 152, 196);
   --dark-accent: rgb(40, 44, 54);
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 body {
@@ -10,4 +14,92 @@ body {
 
   background-color: var(--secondary-color);
   color: var(--light-text);
+
+  display: flex;
+  justify-content: center;
+}
+
+.container {
+  width: max(40vw, 400px);
+}
+
+.list-container {
+  background-color: var(--dark-accent);
+
+  display: grid;
+  grid-auto-rows: min(1fr, 80px);
+}
+
+.append-container {
+  background-color: var(--dark-accent);
+
+  padding: 16px;
+  border-radius: 8px;
+
+  position: relative;
+}
+
+.append-container form {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 4px;
+}
+
+.append-container form input[type="submit"] {
+  color: var(--light-text);
+  background-color: var(--secondary-accent);
+  border: 2px solid var(--light-text);
+  border-left: 0;
+  border-radius: 0 8px 8px 0;
+
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+
+  width: 32px;
+  height: 32px;
+
+  align-self: center;
+  justify-self: flex-start;
+
+  position: absolute;
+  right: -32px;
+}
+
+.append-container form input[type="submit"]:hover {
+  cursor: pointer;
+}
+
+.input-container {
+  display: grid;
+}
+
+.input-container input {
+  width: min(140px, 80%);
+
+  color: var(--light-text);
+  background-color: var(--secondary-accent);
+  border: 1px solid var(--secondary-color);
+  border-radius: 4px;
+
+  font-weight: bold;
+}
+
+div#book-title {
+  grid-column: 1 / 3;
+}
+
+div#book-author {
+  grid-column: 3 / 5;
+}
+
+div#page-count input {
+  width: 48px;
+}
+
+div#have-read {
+  grid-column: 6 / 7;
+
+  display: flex;
+  align-items: center;
 }
