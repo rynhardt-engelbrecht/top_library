@@ -1,0 +1,13 @@
+:root {
+  --light-text: rgb(255, 237, 215);
+  --primary-color: rgb(255, 198, 123);
+  --secondary-color: rgb(80, 90, 115);
+  --dark-accent: rgb(40, 44, 54);
+}
+
+body {
+  margin: 0;
+
+  background-color: var(--secondary-color);
+  color: var(--light-text);
+}
