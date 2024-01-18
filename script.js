@@ -13,6 +13,19 @@ Book.prototype.info = function() {
   return `${this.title} by ${this.author}, ${this.pageCount} pages, ${haveReadString}.`
 };
 
+const addBookButton = document.querySelector('.append-container form input[type="submit"]');
+addBookButton.addEventListener('click', e => {
+  const bookTitleInput = document.querySelector('.append-container form .input-container.book-title input');
+  const bookAuthorInput = document.querySelector('.append-container form .input-container.book-author input');
+  const bookPagesInput = document.querySelector('.append-container form .input-container.page-count input');
+  const bookReadInput = document.querySelector('.append-container form .checkbox-container.have-read input');
+
+  addBookToLibrary(bookTitleInput.value, bookAuthorInput.value, parseInt(bookPagesInput.value), bookReadInput.checked);
+  displayBooks(myLibrary);
+
+  e.preventDefault(); // prevent form submission
+});
+
 /*
 Add a new instance of the Book constructor to the myLibrary array,
 with the arguments passed in as attributes.
@@ -23,27 +36,26 @@ function addBookToLibrary(title, author, pageCount, haveRead) {
 
 function displayBooks(library) {
   const bookList = document.querySelector('.list-container');
+  bookList.innerHTML = '';
 
   library.forEach(book => {
-    library.forEach(book => {
-      const newBook = document.createElement('div');
-      newBook.classList.add('book-container');
+    const newBook = document.createElement('div');
+    newBook.classList.add('book-container');
 
-      newBook.appendChild(createInputContainer('Title', 'text', 'book-title', book.title, true));
-      newBook.appendChild(createInputContainer('Author', 'text', 'book-author', book.author, true));
-      newBook.appendChild(createInputContainer('Pages', 'number', 'page-count', book.pageCount, true));
+    newBook.appendChild(createInputContainer('Title', 'text', 'book-title', book.title, true));
+    newBook.appendChild(createInputContainer('Author', 'text', 'book-author', book.author, true));
+    newBook.appendChild(createInputContainer('Pages', 'number', 'page-count', book.pageCount, true));
 
-      const haveReadContainer = document.createElement('div');
-      haveReadContainer.classList.add('input-container', 'have-read');
+    const haveReadContainer = document.createElement('div');
+    haveReadContainer.classList.add('input-container', 'have-read');
 
-      haveReadContainer.appendChild(createInputContainer('Have Read?', 'checkbox', 'have-read', '', true));
-      const haveReadInput = haveReadContainer.querySelector('input');
-      haveReadInput.checked = book.haveRead;
+    haveReadContainer.appendChild(createInputContainer('Have Read?', 'checkbox', 'have-read', '', true));
+    const haveReadInput = haveReadContainer.querySelector('input');
+    haveReadInput.checked = book.haveRead;
 
-      newBook.appendChild(haveReadContainer);
+    newBook.appendChild(haveReadContainer);
 
-      bookList.append(newBook);
-    });
+    bookList.append(newBook);
   });
 }
 

@@ -21,18 +21,21 @@ body {
 
 .container {
   width: max(40vw, 400px);
+  max-height: 80vh;
 
-  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .list-container {
-  /* background-color: var(--dark-accent); */
+  overflow-y: auto;
 
   display: grid;
   gap: 8px;
   grid-auto-rows: min(1fr, 80px);
 
-  margin-bottom: 8px;
+  margin-bottom: 16px;
 }
 
 .append-container {
