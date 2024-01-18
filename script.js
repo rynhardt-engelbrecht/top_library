@@ -29,6 +29,11 @@ addBookButton.addEventListener('click', e => {
   addBookToLibrary(bookTitleInput.value, bookAuthorInput.value, parseInt(bookPagesInput.value), bookReadInput.checked);
   displayBooks(myLibrary);
 
+  bookTitleInput.value = '';
+  bookAuthorInput.value = '';
+  bookPagesInput.value = '';
+  bookReadInput.checked = false;
+
   e.preventDefault(); // prevent form submission
 });
 
