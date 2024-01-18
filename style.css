@@ -21,13 +21,18 @@ body {
 
 .container {
   width: max(40vw, 400px);
+
+  text-align: center;
 }
 
 .list-container {
-  background-color: var(--dark-accent);
+  /* background-color: var(--dark-accent); */
 
   display: grid;
+  gap: 8px;
   grid-auto-rows: min(1fr, 80px);
+
+  margin-bottom: 8px;
 }
 
 .append-container {
@@ -39,6 +44,24 @@ body {
   position: relative;
 }
 
+.book-container {
+  background-color: var(--primary-color);
+  color: var(--secondary-color);
+
+  padding: 16px;
+  border-radius: 8px;
+}
+
+.book-container .input-container input {
+  border: 1px solid rgb(223, 159, 41);
+  background-color: var(--primary-accent);
+}
+
+input:focus {
+  outline: none;
+}
+
+.book-container,
 .append-container form {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
@@ -85,19 +108,19 @@ body {
   font-weight: bold;
 }
 
-div#book-title {
+div.book-title {
   grid-column: 1 / 3;
 }
 
-div#book-author {
+div.book-author {
   grid-column: 3 / 5;
 }
 
-div#page-count input {
+div.page-count input {
   width: 48px;
 }
 
-div#have-read {
+div.have-read {
   grid-column: 6 / 7;
 
   display: flex;

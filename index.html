@@ -9,29 +9,30 @@
 </head>
 <body>
   <div class="container">
+    <h2>Library</h2>
     <div class="list-container">
     </div>
     <div class="append-container">
       <form action="post">
-        <label for="book-title">
-          Title
+        <div class="input-container book-title">
+          <label for="book-title">Title</label>
           <input type="text" name="book-title" id="book-title">
-        </label>
+        </div>
 
-        <label for="book-author">
-          Author
+        <div class="input-container book-author">
+          <label for="book-author">Author</label>
           <input type="text" name="book-author" id="book-author">
-        </label>
+        </div>
 
-        <label for="page-count">
-          Pages
+        <div class="input-container page-count">
+          <label for="page-count">Pages</label>
           <input type="number" name="page-count" id="page-count">
-        </label>
+        </div>
 
-        <label for="have-read">
-          Have Read?
+        <div class="checkbox-container have-read">
+          <label for="have-read">Have Read?</label>
           <input type="checkbox" name="have-read" id="have-read">
-        </label>
+        </div>
 
         <input type="submit" value="+">
       </form>
