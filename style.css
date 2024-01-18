@@ -20,7 +20,7 @@ body {
 }
 
 .container {
-  width: max(40vw, 400px);
+  width: max(44vw, 460px);
 
   display: flex;
   flex-direction: column;
@@ -111,6 +111,37 @@ input:focus {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   gap: 4px;
+}
+
+.book-container .have-read input[type="checkbox"] {
+  appearance: none;
+
+  width: 32px;
+  height: 20px;
+  border: 1px solid var(--primary-accent);
+  background-color: red;
+  color: var(--light-text);
+
+  cursor: pointer;
+
+  position: relative;
+}
+
+.book-container .have-read input[type="checkbox"]::after {
+  position: absolute;
+
+  content: "✗";
+  left: 10%;
+
+  font-size: 18px;
+}
+
+.book-container .have-read input[type="checkbox"]:checked {
+  background-color: green;
+}
+
+.book-container .have-read input[type="checkbox"]:checked::after {
+  content: "✓";
 }
 
 .append-container form input[type="submit"] {
