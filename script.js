@@ -63,7 +63,7 @@ function displayBooks(library) {
     newBook.appendChild(createInputContainer('Title', 'text', 'book-title', book.title, true));
     newBook.appendChild(createInputContainer('Author', 'text', 'book-author', book.author, true));
     newBook.appendChild(createInputContainer('Pages', 'number', 'page-count', book.pageCount, true));
-    newBook.appendChild(createInputContainer('Have Read?', 'checkbox', 'have-read', book.haveRead, true));
+    const readCheckboxContainer = newBook.appendChild(createInputContainer('Have Read?', 'checkbox', 'have-read', book.haveRead, true));
 
     const deleteButton = document.createElement('button');
     deleteButton.classList.add('delete-button');
@@ -74,6 +74,17 @@ function displayBooks(library) {
       const parentContainer = deleteButton.closest('.book-container');
       removeBook(parentContainer.getAttribute('book-index'));
       displayBooks(myLibrary);
+    });
+
+    const haveReadCheckbox = readCheckboxContainer.querySelector('input')
+    haveReadCheckbox.addEventListener('change', function() {
+      const parentContainer = haveReadCheckbox.closest('.book-container');
+      const bookToUpdate = myLibrary[parentContainer.getAttribute('book-index')];
+      if (haveReadCheckbox.checked) {
+        myLibrary[myLibrary.indexOf(bookToUpdate)].haveRead = true;
+      } else {
+        myLibrary[myLibrary.indexOf(bookToUpdate)].haveRead = false;
+      }
     });
 
     bookList.append(newBook);
