@@ -13,6 +13,10 @@ Book.prototype.info = function() {
   return `${this.title} by ${this.author}, ${this.pageCount} pages, ${haveReadString}.`
 };
 
+Book.prototype.updateReadStatus = function(book, haveRead) {
+  myLibrary[myLibrary.indexOf(book)].haveRead = haveRead;
+};
+
 const addBookButton = document.querySelector('.append-container form input[type="submit"]');
 addBookButton.addEventListener('click', e => {
   e.preventDefault(); // prevent form submission
@@ -80,11 +84,8 @@ function displayBooks(library) {
     haveReadCheckbox.addEventListener('change', function() {
       const parentContainer = haveReadCheckbox.closest('.book-container');
       const bookToUpdate = myLibrary[parentContainer.getAttribute('book-index')];
-      if (haveReadCheckbox.checked) {
-        myLibrary[myLibrary.indexOf(bookToUpdate)].haveRead = true;
-      } else {
-        myLibrary[myLibrary.indexOf(bookToUpdate)].haveRead = false;
-      }
+
+      Book.prototype.updateReadStatus(bookToUpdate, haveReadCheckbox.checked);
     });
 
     bookList.append(newBook);
