@@ -102,6 +102,7 @@ body {
 .book-container .input-container input {
   border: 1px solid rgb(223, 159, 41);
   background-color: var(--primary-accent);
+  color: rgb(226, 209, 189);
 }
 
 input:focus {
