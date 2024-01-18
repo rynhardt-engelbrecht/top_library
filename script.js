@@ -20,6 +20,12 @@ addBookButton.addEventListener('click', e => {
   const bookPagesInput = document.querySelector('.append-container form .input-container.page-count input');
   const bookReadInput = document.querySelector('.append-container form .checkbox-container.have-read input');
 
+  if (bookTitleInput.value === '' || bookAuthorInput.value === '' || bookPagesInput.value === '') {
+    alert('Please fill out all fields.');
+    e.preventDefault(); // Prevent form submission
+    return;
+  }
+
   addBookToLibrary(bookTitleInput.value, bookAuthorInput.value, parseInt(bookPagesInput.value), bookReadInput.checked);
   displayBooks(myLibrary);
 
