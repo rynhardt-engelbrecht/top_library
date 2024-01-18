@@ -58,6 +58,7 @@ body {
 .append-container {
   width: max(44vw, 480px);
   background-color: var(--dark-accent);
+  box-shadow: 4px 4px 8px rgb(23, 25, 31);
 
   padding: 16px;
   border-radius: 8px;
