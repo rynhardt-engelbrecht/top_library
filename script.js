@@ -17,8 +17,8 @@ Book.prototype.updateReadStatus = function(book, haveRead) {
   myLibrary[myLibrary.indexOf(book)].haveRead = haveRead;
 };
 
-const addBookButton = document.querySelector('.append-container form input[type="submit"]');
-addBookButton.addEventListener('click', e => {
+const form = document.querySelector('.append-container form');
+form.addEventListener('submit', e => {
   e.preventDefault(); // prevent form submission
 
   const bookTitleInput = document.querySelector('.append-container form .input-container.book-title input');
@@ -33,11 +33,7 @@ addBookButton.addEventListener('click', e => {
 
   addBookToLibrary(bookTitleInput.value, bookAuthorInput.value, parseInt(bookPagesInput.value), bookReadInput.checked);
   displayBooks(myLibrary);
-
-  bookTitleInput.value = '';
-  bookAuthorInput.value = '';
-  bookPagesInput.value = '';
-  bookReadInput.checked = false;
+  form.reset()
 });
 
 /*
