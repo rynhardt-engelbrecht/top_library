@@ -71,6 +71,7 @@ body {
 .book-container {
   background-color: var(--primary-color);
   color: var(--secondary-color);
+  box-shadow: 2px 3px 6px rgb(63, 43, 19);
 
   padding: 16px;
   margin: 8px 38px;
