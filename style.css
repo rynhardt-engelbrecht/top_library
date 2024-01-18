@@ -79,7 +79,7 @@ body {
 }
 
 .delete-button {
-  width: 28px;
+  width: fit-content;
   height: 28px;
 
   color: var(--light-text);
@@ -88,8 +88,10 @@ body {
   border-radius: 0 6px 6px 0;
   background-color: var(--primary-accent);
 
+  font-weight: bold;
+
   position: absolute;
-  right: -28px;
+  right: -53px;
   top: 30%;
 }
 
