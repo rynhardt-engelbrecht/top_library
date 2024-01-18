@@ -21,31 +21,50 @@ body {
 
 .container {
   width: max(40vw, 400px);
-  max-height: 80vh;
 
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  position: relative;
+}
+
+.header {
+  width: 80vw;
+
+  position: sticky;
+  z-index: 2;
+  top: 0;
+
+  background-color: var(--secondary-color);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  border-bottom: 1px solid var(--dark-accent);
 }
 
 .list-container {
-  overflow-y: auto;
-
   display: grid;
   gap: 8px;
   grid-auto-rows: min(1fr, 80px);
 
-  margin-bottom: 16px;
+  border-left: 1px solid var(--dark-accent);
+  border-right: 1px solid var(--dark-accent);
+  box-shadow: 8px 0 32px var(--dark-accent);
 }
 
 .append-container {
-  width: 102%;
+  width: max(44vw, 480px);
   background-color: var(--dark-accent);
 
   padding: 16px;
   border-radius: 8px;
 
   position: relative;
+
+  margin-bottom: 16px;
 }
 
 .book-container {
@@ -53,7 +72,29 @@ body {
   color: var(--secondary-color);
 
   padding: 16px;
+  margin: 8px 38px;
   border-radius: 8px;
+
+  position: relative;
+}
+
+.delete-button {
+  width: 28px;
+  height: 28px;
+
+  color: var(--light-text);
+  border: 2px solid var(--primary-color);
+  border-left: 0;
+  border-radius: 0 6px 6px 0;
+  background-color: var(--primary-accent);
+
+  position: absolute;
+  right: -28px;
+  top: 30%;
+}
+
+.delete-button:hover {
+  cursor: pointer;
 }
 
 .book-container .input-container input {

@@ -9,33 +9,36 @@
 </head>
 <body>
   <div class="container">
-    <h2>Library</h2>
-    <div class="list-container">
+    <div class="header">
+      <h2>Library</h2>
+      <div class="append-container">
+        <form action="post">
+          <div class="input-container book-title">
+            <label for="book-title">Title</label>
+            <input type="text" name="book-title" id="book-title" required>
+          </div>
+
+          <div class="input-container book-author">
+            <label for="book-author">Author</label>
+            <input type="text" name="book-author" id="book-author" required>
+          </div>
+
+          <div class="input-container page-count">
+            <label for="page-count">Pages</label>
+            <input type="number" name="page-count" id="page-count" required>
+          </div>
+
+          <div class="checkbox-container have-read">
+            <label for="have-read">Have Read?</label>
+            <input type="checkbox" name="have-read" id="have-read" required>
+          </div>
+
+          <input type="submit" value="+">
+        </form>
+      </div>
     </div>
-    <div class="append-container">
-      <form action="post">
-        <div class="input-container book-title">
-          <label for="book-title">Title</label>
-          <input type="text" name="book-title" id="book-title" required>
-        </div>
 
-        <div class="input-container book-author">
-          <label for="book-author">Author</label>
-          <input type="text" name="book-author" id="book-author" required>
-        </div>
-
-        <div class="input-container page-count">
-          <label for="page-count">Pages</label>
-          <input type="number" name="page-count" id="page-count" required>
-        </div>
-
-        <div class="checkbox-container have-read">
-          <label for="have-read">Have Read?</label>
-          <input type="checkbox" name="have-read" id="have-read" required>
-        </div>
-
-        <input type="submit" value="+">
-      </form>
+    <div class="list-container">
     </div>
   </div>
 </body>
