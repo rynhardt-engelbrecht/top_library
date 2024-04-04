@@ -14,8 +14,8 @@ class Book {
     return `${this.title} by ${this.author}, ${this.pageCount} pages, ${haveReadString}.`
   }
 
-  updateReadStatus(haveReadBool) {
-    this.haveRead = haveReadBool;
+  static updateReadStatus(bookToUpdate, haveReadBool) {
+    bookToUpdate.haveRead = haveReadBool;
   }
 
   static addBookToLibrary(title, author, pageCount, haveRead) {
@@ -26,7 +26,7 @@ class Book {
     let updatedLibrary = this.library.filter((book, index) => index != deleteIndex);
 
     this.library = updatedLibrary;
-    displayBooks(this.library);
+    this.displayBooks(this.library);
   }
 
   static displayBooks() {
@@ -50,14 +50,14 @@ class Book {
       newBook.appendChild(deleteButton);
       deleteButton.addEventListener('click', () => {
         const parentContainer = deleteButton.closest('.book-container');
-        removeBook(parentContainer.getAttribute('book-index'));
-        displayBooks(myLibrary);
+        Book.removeBook(parentContainer.getAttribute('book-index'));
+        Book.displayBooks(Book.library);
       });
 
       const haveReadCheckbox = readCheckboxContainer.querySelector('input')
       haveReadCheckbox.addEventListener('change', function() {
         const parentContainer = haveReadCheckbox.closest('.book-container');
-        const bookToUpdate = myLibrary[parentContainer.getAttribute('book-index')];
+        const bookToUpdate = Book.library[parentContainer.getAttribute('book-index')];
 
         Book.updateReadStatus(bookToUpdate, haveReadCheckbox.checked);
       });
