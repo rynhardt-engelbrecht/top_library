@@ -13,11 +13,11 @@ class Book {
 
     return `${this.title} by ${this.author}, ${this.pageCount} pages, ${haveReadString}.`
   }
-}
 
-Book.prototype.updateReadStatus = function(book, haveRead) {
-  myLibrary[myLibrary.indexOf(book)].haveRead = haveRead;
-};
+  updateReadStatus(haveReadBool) {
+    this.haveRead = haveReadBool;
+  }
+}
 
 const form = document.querySelector('.append-container form');
 form.addEventListener('submit', e => {
