@@ -17,6 +17,54 @@ class Book {
   updateReadStatus(haveReadBool) {
     this.haveRead = haveReadBool;
   }
+
+  static addBookToLibrary(title, author, pageCount, haveRead) {
+    this.library.push(new Book(title, author, pageCount, haveRead));
+  }
+
+  static removeBook(deleteIndex) {
+    let updatedLibrary = this.library.filter((book, index) => index != deleteIndex);
+
+    this.library = updatedLibrary;
+    displayBooks(this.library);
+  }
+
+  static displayBooks() {
+    const bookList = document.querySelector('.list-container');
+    bookList.innerHTML = '';
+
+    this.library.forEach(book => {
+      const newBook = document.createElement('div');
+      newBook.classList.add('book-container');
+      newBook.setAttribute('book-index', this.library.indexOf(book));
+
+      newBook.appendChild(createInputContainer('Title', 'text', 'book-title', book.title, true));
+      newBook.appendChild(createInputContainer('Author', 'text', 'book-author', book.author, true));
+      newBook.appendChild(createInputContainer('Pages', 'number', 'page-count', book.pageCount, true));
+      const readCheckboxContainer = newBook.appendChild(createInputContainer('Have Read?', 'checkbox', 'have-read', book.haveRead, true));
+
+      const deleteButton = document.createElement('button');
+      deleteButton.classList.add('delete-button');
+      deleteButton.textContent = "delete";
+
+      newBook.appendChild(deleteButton);
+      deleteButton.addEventListener('click', () => {
+        const parentContainer = deleteButton.closest('.book-container');
+        removeBook(parentContainer.getAttribute('book-index'));
+        displayBooks(myLibrary);
+      });
+
+      const haveReadCheckbox = readCheckboxContainer.querySelector('input')
+      haveReadCheckbox.addEventListener('change', function() {
+        const parentContainer = haveReadCheckbox.closest('.book-container');
+        const bookToUpdate = myLibrary[parentContainer.getAttribute('book-index')];
+
+        Book.updateReadStatus(bookToUpdate, haveReadCheckbox.checked);
+      });
+
+      bookList.append(newBook);
+    });
+  }
 }
 
 const form = document.querySelector('.append-container form');
@@ -33,62 +81,10 @@ form.addEventListener('submit', e => {
     return;
   }
 
-  addBookToLibrary(bookTitleInput.value, bookAuthorInput.value, parseInt(bookPagesInput.value), bookReadInput.checked);
-  displayBooks(myLibrary);
+  Book.addBookToLibrary(bookTitleInput.value, bookAuthorInput.value, parseInt(bookPagesInput.value), bookReadInput.checked);
+  Book.displayBooks(Book.library);
   form.reset()
 });
-
-/*
-Add a new instance of the Book constructor to the myLibrary array,
-with the arguments passed in as attributes.
-*/
-function addBookToLibrary(title, author, pageCount, haveRead) {
-  myLibrary.push(new Book(title, author, pageCount, haveRead));
-}
-
-function removeBook(deleteIndex) {
-  let currentLibrary = myLibrary.filter((book, index) => index != deleteIndex);
-
-  myLibrary = currentLibrary;
-  displayBooks(myLibrary);
-}
-
-function displayBooks(library) {
-  const bookList = document.querySelector('.list-container');
-  bookList.innerHTML = '';
-
-  library.forEach(book => {
-    const newBook = document.createElement('div');
-    newBook.classList.add('book-container');
-    newBook.setAttribute('book-index', myLibrary.indexOf(book));
-
-    newBook.appendChild(createInputContainer('Title', 'text', 'book-title', book.title, true));
-    newBook.appendChild(createInputContainer('Author', 'text', 'book-author', book.author, true));
-    newBook.appendChild(createInputContainer('Pages', 'number', 'page-count', book.pageCount, true));
-    const readCheckboxContainer = newBook.appendChild(createInputContainer('Have Read?', 'checkbox', 'have-read', book.haveRead, true));
-
-    const deleteButton = document.createElement('button');
-    deleteButton.classList.add('delete-button');
-    deleteButton.textContent = "delete";
-
-    newBook.appendChild(deleteButton);
-    deleteButton.addEventListener('click', () => {
-      const parentContainer = deleteButton.closest('.book-container');
-      removeBook(parentContainer.getAttribute('book-index'));
-      displayBooks(myLibrary);
-    });
-
-    const haveReadCheckbox = readCheckboxContainer.querySelector('input')
-    haveReadCheckbox.addEventListener('change', function() {
-      const parentContainer = haveReadCheckbox.closest('.book-container');
-      const bookToUpdate = myLibrary[parentContainer.getAttribute('book-index')];
-
-      Book.prototype.updateReadStatus(bookToUpdate, haveReadCheckbox.checked);
-    });
-
-    bookList.append(newBook);
-  });
-}
 
 function createInputContainer(labelText, inputType, inputName, inputValue, readOnly) {
   const container = document.createElement('div');
