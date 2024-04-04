@@ -1,10 +1,12 @@
-let myLibrary = [];
+class Book {
+  static library = [];
 
-function Book(title, author, pageCount, haveRead) {
-  this.title = title;
-  this.author = author;
-  this.pageCount = pageCount;
-  this.haveRead = haveRead;
+  constructor(title, author, pageCount, haveRead) {
+    this.title = title;
+    this.author = author;
+    this.pageCount = pageCount;
+    this.haveRead = haveRead;
+  }
 }
 
 Book.prototype.info = function() {
