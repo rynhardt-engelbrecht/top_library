@@ -14,6 +14,10 @@ class Book {
     return `${this.title} by ${this.author}, ${this.pageCount} pages, ${haveReadString}.`
   }
 
+  /*
+  This static method receives a reference to the book that needs to be updated, then
+  directly changes the book's haveRead attribute.
+  */
   static updateReadStatus(bookToUpdate, haveReadBool) {
     bookToUpdate.haveRead = haveReadBool;
   }
@@ -22,6 +26,11 @@ class Book {
     this.library.push(new Book(title, author, pageCount, haveRead));
   }
 
+  /*
+  This method removes a book at a given index from the library, by filtering
+  every book that is *not* at the index to be deleted into a separate 'updatedLibrary'
+  array, then sets the static library field to the updatedLibrary variable.
+  */
   static removeBook(deleteIndex) {
     let updatedLibrary = this.library.filter((book, index) => index != deleteIndex);
 
@@ -29,6 +38,11 @@ class Book {
     this.displayBooks(this.library);
   }
 
+  /*
+  This method displays the book in the library static field, by looping through
+  every book in the array, and for every element creating a set of HTML elements to add to
+  the DOM.
+  */
   static displayBooks() {
     const bookList = document.querySelector('.list-container');
     bookList.innerHTML = '';
