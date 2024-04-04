@@ -7,13 +7,13 @@ class Book {
     this.pageCount = pageCount;
     this.haveRead = haveRead;
   }
+
+  get info() {
+    haveReadString = this.haveRead ? "already read" : "not read yet";
+
+    return `${this.title} by ${this.author}, ${this.pageCount} pages, ${haveReadString}.`
+  }
 }
-
-Book.prototype.info = function() {
-  haveReadString = this.haveRead ? "already read" : "not read yet";
-
-  return `${this.title} by ${this.author}, ${this.pageCount} pages, ${haveReadString}.`
-};
 
 Book.prototype.updateReadStatus = function(book, haveRead) {
   myLibrary[myLibrary.indexOf(book)].haveRead = haveRead;
