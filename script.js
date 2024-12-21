@@ -90,8 +90,13 @@ form.addEventListener('submit', e => {
   const bookPagesInput = document.querySelector('.append-container form .input-container.page-count input');
   const bookReadInput = document.querySelector('.append-container form .checkbox-container.have-read input');
 
-  if (bookTitleInput.value === '' || bookAuthorInput.value === '' || bookPagesInput.value === '') {
+  if (bookTitleInput.validity.valueMissing ||
+      bookAuthorInput.validity.valueMissing ||
+      bookPagesInput.validity.valueMissing) {
     alert('Please fill out all fields.');
+    return;
+  } else if (bookPagesInput.validity.rangeUnderflow) {
+    alert('Page count can\'t be less than 1');
     return;
   }
 
